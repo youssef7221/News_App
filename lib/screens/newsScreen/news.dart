@@ -5,7 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
-import '../models/sources.dart';
+import '../../models/sources.dart';
 
 class NewsItem extends StatelessWidget {
   Articles news;

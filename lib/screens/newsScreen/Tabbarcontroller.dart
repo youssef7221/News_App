@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:news_app/api_manager/api_manager.dart';
 import 'package:news_app/models/sources.dart';
-import 'package:news_app/screens/news.dart';
-import 'package:news_app/screens/tabbaritem.dart';
+import 'package:news_app/screens/newsScreen/news.dart';
+import 'package:news_app/screens/newsScreen/tabbaritem.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../constants/appcolors.dart';
+import '../../constants/appcolors.dart';
 
 
 class TabbarController extends StatefulWidget {

@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/models/categoriesdm.dart';
-import 'package:news_app/screens/categories/categories_screen.dart';
-import 'package:news_app/settings/settings.dart';
+import 'package:news_app/screens/categoriesScreen/categories_screen.dart';
+import 'package:news_app/screens/settings/settings.dart';
 import '../api_manager/api_manager.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import '../constants/appcolors.dart';
 import 'Drawer.dart';
-import 'Tabbarcontroller.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import 'newsScreen/Tabbarcontroller.dart';
 class HomeScreen extends StatefulWidget {
   static String route = "HomeScreen";
   int index = 1;
@@ -25,7 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Scaffold(
         backgroundColor: Colors.transparent,
         appBar: AppBar(
-          title: Text("News App"),
+          title: Text(AppLocalizations.of(context)!.newsApp),
           backgroundColor: AppColors.primary,
           elevation: 0.0,
           centerTitle: true,

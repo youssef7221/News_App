@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/constants/appcolors.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Drawerscreen extends StatelessWidget{
   Function selectedDrawer ;
@@ -17,7 +18,7 @@ class Drawerscreen extends StatelessWidget{
             padding: EdgeInsets.only(top: 50),
             color: AppColors.primary,
             child: Text(
-              "News",
+              AppLocalizations.of(context)!.news,
               style: TextStyle(color: Colors.white, fontSize: 26),
               textAlign: TextAlign.center,
             ),
