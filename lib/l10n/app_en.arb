@@ -1,0 +1,16 @@
+
+{
+ "newsApp" : "News App",
+ "news" : "News",
+ "categories" : "Categories",
+ "settings" : "Settings",
+ "sports" : "Sports",
+ "entertaiment" : "Entertainment",
+ "health" : "Health",
+ "business" : "Buisness",
+ "general" : "General",
+ "science" : "Science",
+ "technology" : "Technology",
+ "all" : "All",
+ "pickcat" :"Pick your category of interest"
+}

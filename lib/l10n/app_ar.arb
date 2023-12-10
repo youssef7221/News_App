@@ -1,0 +1,15 @@
+{
+  "newsApp" : "الاخبار",
+  "news" : "الاخبار",
+  "categories" : "الفئات",
+  "settings" : "الاعدادات",
+  "sports" : "الرياضة",
+  "entertaiment" : "ترفيه",
+  "health" : "الصحة",
+  "business" : "الاقتصاد",
+  "general" : "عامة",
+  "science" : "العلوم",
+  "technology" : "التكنولوجيا",
+  "all" : "الكل",
+  "pickcat" :"اختر فئة اخبارك"
+}
