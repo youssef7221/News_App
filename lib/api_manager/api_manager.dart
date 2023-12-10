@@ -17,11 +17,11 @@ class ApiManager{
    return sourceResponce;
   }
 
-  static Future<NewsData> getarticles(String sourceId) async{
+  static Future<NewsData> getarticles(String sourceId ) async{
      Uri url = Uri.https("newsapi.org","/v2/everything",
      {
        "apikey":"90183199873a4d0daa6cafad23cc591c",
-       "sources": sourceId
+       "sources": sourceId,
      });
   http.Response response =await http.get(url);
   var jsonData = jsonDecode(response.body);

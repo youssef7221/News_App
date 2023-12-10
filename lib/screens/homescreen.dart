@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/models/categoriesdm.dart';
+import 'package:news_app/screens/newappbar.dart';
+import 'package:news_app/provider/settings_provider.dart';
 import 'package:news_app/screens/categoriesScreen/categories_screen.dart';
 import 'package:news_app/screens/settings/settings.dart';
+import 'package:provider/provider.dart';
 import '../api_manager/api_manager.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import '../constants/appcolors.dart';
@@ -12,6 +15,7 @@ import 'newsScreen/Tabbarcontroller.dart';
 class HomeScreen extends StatefulWidget {
   static String route = "HomeScreen";
   int index = 1;
+  bool isSearch = false;
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
@@ -19,44 +23,42 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    return  Container(
-      decoration: BoxDecoration(
-          color: Colors.white,
-          image: DecorationImage(
-              image: AssetImage("assets/pattern.png"), fit: BoxFit.cover)),
-      child: Scaffold(
-        backgroundColor: Colors.transparent,
-        appBar: AppBar(
-          title: Text(AppLocalizations.of(context)!.newsApp),
-          backgroundColor: AppColors.primary,
-          elevation: 0.0,
-          centerTitle: true,
-          shape: StadiumBorder(side: BorderSide(color: Colors.transparent)),
+    return  ChangeNotifierProvider(
+      create: (context) => settingsProvider(),
+      child: Container(
+        decoration: BoxDecoration(
+            color: Colors.white,
+            image: DecorationImage(
+                image: AssetImage("assets/pattern.png"), fit: BoxFit.cover)),
+        child: Scaffold(
+          backgroundColor: Colors.transparent,
+          appBar: MyAppBar(),
+          drawer: Drawerscreen(selectedDrawer),
+
+          body:  FutureBuilder(future: ApiManager.getsources(_categoryDm?.categoryId??""),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting)
+              {
+                return Center(
+                    child: LoadingAnimationWidget.fourRotatingDots(
+                      color: AppColors.primary,
+                      size: 100,
+                    )
+                );
+              }
+              if (snapshot.hasError)
+              {
+                return Center(child: Text("Something went wrong"));
+              }
+              var sources = snapshot.data?.sources ?? [];
+              var taps = [
+                TabbarController(sources),
+                CategoriesScreen(getCategory),
+                SettingsScreen(),
+              ];
+              return taps[widget.index];
+            },),
         ),
-        drawer: Drawerscreen(selectedDrawer),
-        body:  FutureBuilder(future: ApiManager.getsources(_categoryDm?.categoryId??""),
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting)
-            {
-              return Center(
-                  child: LoadingAnimationWidget.fourRotatingDots(
-                    color: AppColors.primary,
-                    size: 100,
-                  )
-              );
-            }
-            if (snapshot.hasError)
-            {
-              return Center(child: Text("Something went wrong"));
-            }
-            var sources = snapshot.data?.sources ?? [];
-            var taps = [
-              TabbarController(sources),
-              CategoriesScreen(getCategory),
-              SettingsScreen(),
-            ];
-            return taps[widget.index];
-          },),
       ),
     );
   }

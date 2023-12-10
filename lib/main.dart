@@ -7,7 +7,7 @@ import 'package:news_app/screens/splash_screen/splash.dart';
 import 'package:news_app/shared_pref/shared_pref.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
- Future <void>main() async {
+ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await SharedPref.startCache();
   runApp( ChangeNotifierProvider(
